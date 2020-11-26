@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Notebook para Todos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Alunos <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/local">Locais</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/socioeconomico">Cadastro Socioeconômico</a>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid" >
+
+    <h2><%= title %></h2>
+    <a href="/add" class="btn btn-sm btn-primary">Adicionar Aluno</a><br/><br/>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>CPF</th>
+          <th>RG</th>
+          <th>Sexo</th>
+          <th>Data de nascimento</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Possui cadastro socioeconômico</th>
+          <th>Pode pegar Notebook</th>
+          <th>Local</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% users.forEach(function(user){ %>
+              <tr>
+                  <td><%= user.cpf %></td>
+                  <td><%= user.rg %></td>
+                  <td><%= user.sexo %></td>
+                  <td><%= user.data_de_nascimento.toLocaleDateString()  %></td>
+                  <td><%= user.nome %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.telefone %></td>
+                  <td><% if(user.socioeconomico_id_socioeconomico){ %>
+                      <p>sim</p>
+                    <% } else{ %>  
+                      <p>não</p>
+                  <% } %></td>
+                  <td><%= user.permissao_para_pegar_notebook %></td>
+                  <td><%= user.local_idlocal  %></td>
+                  <td>
+                      <a href="edit/<%= user.id %>" class="btn btn-sm btn-primary">Editar</a>
+                      <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger">Delete</a>
+                  </td>
+              </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+
+</body>
+</html>
