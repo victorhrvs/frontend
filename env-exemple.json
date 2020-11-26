@@ -1,0 +1,7 @@
+{
+    "host": "127.0.0.1",
+    "user": "user",
+    "password": "12345678",
+    "database": "notebooks_para_todos",
+    "port": "3306"
+}
