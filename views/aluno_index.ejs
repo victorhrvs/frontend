@@ -34,7 +34,7 @@
   <div class="container-fluid" >
 
     <h2><%= title %></h2>
-    <a href="/add" class="btn btn-sm btn-primary">Adicionar Aluno</a><br/><br/>
+    <a href="/aluno_add" class="btn btn-sm btn-primary">Adicionar Aluno</a><br/><br/>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -65,11 +65,16 @@
                     <% } else{ %>  
                       <p>não</p>
                   <% } %></td>
-                  <td><%= user.permissao_para_pegar_notebook %></td>
+                  <td><% if (user.permissao_para_pegar_notebook) { %>
+                    <p>sim</p>
+                  <% }else{ %>  
+                    <p>não</p>
+                  <% } %>
+                  </td>
                   <td><%= user.local_idlocal  %></td>
                   <td>
-                      <a href="edit/<%= user.id %>" class="btn btn-sm btn-primary">Editar</a>
-                      <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger">Delete</a>
+                      <a href="aluno_edit/<%= user.matricula %>" class="btn btn-sm btn-primary">Editar</a>
+                      <a href="aluno_delete/<%= user.matricula %>" class="btn btn-sm btn-danger">Delete</a>
                   </td>
               </tr>
           <% }); %>

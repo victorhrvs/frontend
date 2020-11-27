@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2><%= title %></h2>
+  <form action="/aluno_save" method="post">
+    <div class="form-group">
+      <label for="cpf">cpf:</label>
+      <input type="text" class="form-control" id="cpf" placeholder="Entre com o cpf" name="cpf" required>
+    </div>
+    <div class="form-group">
+      <label for="rg">rg:</label>
+      <input type="text" class="form-control" id="rg" placeholder="Entre com o rg" name="rg" required>
+    </div>
+    <div class="form-group">
+      <label for="sexo">sexo:</label>
+      <input type="text" class="form-control" id="sexo" placeholder="Entre com o sexo" name="sexo" required>
+    </div>
+    <div class="form-group">
+      <label for="data_de_nascimento">data_de_nascimento:</label>
+      <input type="date" class="form-control" id="data_de_nascimento" placeholder="Entre com o data_de_nascimento" name="data_de_nascimento" required>
+    </div>
+    <div class="form-group">
+      <label for="nome">nome:</label>
+      <input type="text" class="form-control" id="nome" placeholder="Entre com o nome" name="nome" required>
+    </div>
+    <div class="form-group">
+      <label for="email">email:</label>
+      <input type="text" class="form-control" id="email" placeholder="Entre com o email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="telefone">telefone:</label>
+      <input type="text" class="form-control" id="telefone" placeholder="Entre com o telefone" name="telefone" required>
+    </div>
+    <div class="form-group">
+      <label for="socioeconomico_id_socioeconomico">socioeconomico_id_socioeconomico:</label>
+      <input type="text" class="form-control" id="socioeconomico_id_socioeconomico" placeholder="Entre com o socioeconomico_id_socioeconomico" name="socioeconomico_id_socioeconomico">
+    </div>
+    <div class="form-group">
+      <label for="permissao_para_pegar_notebook">permissao_para_pegar_notebook:</label>
+      <input type="text" class="form-control" id="permissao_para_pegar_notebook" placeholder="Entre com o permissao_para_pegar_notebook" name="permissao_para_pegar_notebook" required>
+    </div>
+    <div class="form-group">
+      <label for="local_idlocal">local_idlocal:</label>
+      <input type="text" class="form-control" id="local_idlocal" placeholder="Entre com o local_idlocal" name="local_idlocal" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>

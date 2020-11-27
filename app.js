@@ -29,21 +29,101 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+/////////////////////////////
+//Rotas para a Tabela aluno//
+/////////////////////////////
 
-
+// Read
 app.get('/',(req, res) => {
     // res.send('CRUD Operation using NodeJS / ExpressJS / MySQL');
     let sql = "SELECT * FROM `aluno`";
     let query = connection.query(sql, (err, rows) => {
         if(err) throw err;
-        res.render('user_index', {
+        res.render('aluno_index', {
             title : 'Alunos na base de dados',
             users : rows
         });
     });
 });
 
+// Create
+app.get('/aluno_add',(req, res) => {
+    res.render('aluno_add', {
+        title : 'Adicionar informações do Aluno'
+    });
+});
 
+
+app.post('/aluno_save',(req, res) => { 
+
+    idsocioeconomico = (req.body.socioeconomico_id_socioeconomico == '') ? null : req.body.socioeconomico_id_socioeconomico;
+    
+    let data = {
+        cpf: req.body.cpf,
+        rg: req.body.rg,
+        sexo: req.body.sexo,
+        data_de_nascimento: req.body.data_de_nascimento,
+        nome: req.body.nome,
+        email: req.body.email,
+        telefone: req.body.telefone,
+        socioeconomico_id_socioeconomico: idsocioeconomico,
+        permissao_para_pegar_notebook: req.body.permissao_para_pegar_notebook, 
+        local_idlocal: req.body.local_idlocal};
+    
+    let sql = "INSERT INTO `aluno` SET ?";
+    let query = connection.query(sql, data,(err, results) => {
+        if(err) throw err;
+        res.redirect('/');
+    });
+});
+
+// Update
+app.get('/aluno_edit/:matricula',(req, res) => {
+    
+    const alunoId = req.params.matricula;
+    let sql = `Select * from notebooks_para_todos.aluno where matricula = ${alunoId}`;
+    let query = connection.query(sql,(err, result) => {
+        if(err) throw err;
+        res.render('aluno_edit', {
+            title : 'Editar aluno',
+            aluno : result[0]
+        });
+    });
+});
+
+app.post('/aluno_update',(req, res) => {
+    const matricula = req.body.matricula;
+    let sql;
+    (req.body.socioeconomico_id_socioeconomico == '') ? 
+        sql = ("update notebooks_para_todos.aluno SET cpf='"+req.body.cpf+"',  rg='"+req.body.rg+"',  sexo='"+req.body.sexo+"', data_de_nascimento='"+req.body.data_de_nascimento+"', nome='"+req.body.nome+"', email='"+req.body.email+"', telefone='"+req.body.telefone+"', socioeconomico_id_socioeconomico=null, permissao_para_pegar_notebook='"+req.body.permissao_para_pegar_notebook+"', local_idlocal='"+req.body.local_idlocal+"' where matricula ="+matricula)
+        : sql = ("update notebooks_para_todos.aluno SET cpf='"+req.body.cpf+"',  rg='"+req.body.rg+"',  sexo='"+req.body.sexo+"', data_de_nascimento='"+req.body.data_de_nascimento+"', nome='"+req.body.nome+"', email='"+req.body.email+"', telefone='"+req.body.telefone+"', socioeconomico_id_socioeconomico='"+req.body.socioeconomico_id_socioeconomico+"', permissao_para_pegar_notebook='"+req.body.permissao_para_pegar_notebook+"', local_idlocal='"+req.body.local_idlocal+"' where matricula ="+matricula);
+    let query = connection.query(sql,(err, results) => {
+        if(err) throw err;
+        res.redirect('/');
+    });
+});
+
+// Delete
+app.get('/aluno_delete/:matricula',(req, res) => {
+    const matricula = req.params.matricula;
+    let sql = `DELETE from notebooks_para_todos.aluno where matricula = ${matricula}`;
+    let query = connection.query(sql,(err, result) => {
+        if(err) {
+            if(err.errno == 1451){
+                console.log("aluno cadastrado está sendo utilizado")
+                res.render('alert', {
+                    title : 'Não é possível deletar',
+                    msg: "aluno está sendo utilizado por um ou mais fks"
+                });
+            } else {
+                throw err;
+            }
+        } else {
+            res.redirect('/');
+        }
+
+    });
+});
 
 
 /////////////////////////////
@@ -197,7 +277,7 @@ app.get('/socioeconomico_delete/:id_socioeconomico',(req, res) => {
                 console.log("Cadastrado Socioeconômico está sendo utilizado por um ou mais Alunos")
                 res.render('alert', {
                     title : 'Não é possível deletar',
-                    msg: "Cadastrado Socioeconômico está sendo utilizado por um ou mais Alunos"
+                    msg: "Cadastrado Socioeconômico está sendo utilizado por um Aluno"
                 });
             } else {
                 throw err;
