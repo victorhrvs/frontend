@@ -49,9 +49,24 @@
                   <tr>
                       <td><%= cadastro.numero_de_membros_da_familia %></td>
                       <td><%= cadastro.renda_per_capita %></td>
-                      <td><%= cadastro.programa_bolsa_familia %></td>
-                      <td><%= cadastro.programa_de_erradicacao_do_trabalho_infantil %></td>
-                      <td><%= cadastro.programa_projovem_adolescente %></td>
+                      <td><% if (cadastro.programa_bolsa_familia) { %>
+                            <p>sim</p>
+                          <% }else{ %>  
+                            <p>não</p>
+                          <% } %>
+                      </td>
+                      <td><% if (cadastro.programa_de_erradicacao_do_trabalho_infantil) { %>
+                          <p>sim</p>
+                          <% }else{ %>  
+                            <p>não</p>
+                          <% } %>
+                      </td>
+                      <td><% if (cadastro.programa_projovem_adolescente) { %>
+                          <p>sim</p>
+                          <% }else{ %>  
+                            <p>não</p>
+                          <% } %>
+                      </td>
                       <td>
                           <a href="socioeconomico_edit/<%= cadastro.id_socioeconomico %>" class="btn btn-sm btn-primary">Editar</a>
                           <a href="socioeconomico_delete/<%= cadastro.id_socioeconomico %>" class="btn btn-sm btn-danger">Delete</a>
