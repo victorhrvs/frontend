@@ -33,7 +33,7 @@
     <div class="container-fluid" >
 
         <h2><%= title %></h2>
-        <a href="/add" class="btn btn-sm btn-primary">Adicionar Local</a><br/><br/>
+        <a href="/socioeconomico_add" class="btn btn-sm btn-primary">Adicionar Cadastro Socioeconômico</a><br/><br/>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -53,8 +53,8 @@
                       <td><%= cadastro.programa_de_erradicacao_do_trabalho_infantil %></td>
                       <td><%= cadastro.programa_projovem_adolescente %></td>
                       <td>
-                          <a href="edit/<%= cadastro.id %>" class="btn btn-sm btn-primary">Editar</a>
-                          <a href="delete/<%= cadastro.id %>" class="btn btn-sm btn-danger">Delete</a>
+                          <a href="socioeconomico_edit/<%= cadastro.id_socioeconomico %>" class="btn btn-sm btn-primary">Editar</a>
+                          <a href="socioeconomico_delete/<%= cadastro.id_socioeconomico %>" class="btn btn-sm btn-danger">Delete</a>
                       </td>
                   </tr>
               <% }); %>

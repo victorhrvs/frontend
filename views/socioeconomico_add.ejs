@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Notebook para Todos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Alunos</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/local">Locais</a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="/socioeconomico">Cadastro Socioeconômico<span class="sr-only">(current)</span></a>
+        </ul>
+        </div>
+</nav>
+
+
+<div class="container">
+  <h2><%= title %></h2>
+  <form action="/socioeconomico_save" method="post"  id="form">
+    <div class="form-group">
+      <label for="numero_de_membros_da_familia">Número de membros da familia:</label>
+      <input type="text" class="form-control" id="numero_de_membros_da_familia" placeholder="Número de membros da familia" name="numero_de_membros_da_familia" required>
+    </div>
+    <div class="form-group">
+      <label for="renda_per_capita">Renda per capita:</label>
+      <input type="text" class="form-control" id="renda_per_capita" placeholder="Renda per capita" name="renda_per_capita" required>
+    </div>
+    <div class="form-group">
+      <label for="programa_bolsa_familia">Programa bolsa familia:</label>
+      <input type="checkbox" class="form-control" id="programa_bolsa_familia" placeholder="Programa bolsa familia" name="programa_bolsa_familia" value="1">
+    </div>
+    <div class="form-group">
+        <label for="programa_de_erradicacao_do_trabalho_infantil">Programa de erradicacao do trabalho infantil:</label>
+        <input type="checkbox" class="form-control" id="programa_de_erradicacao_do_trabalho_infantil" placeholder="Programa de erradicacao do trabalho infantil" name="programa_de_erradicacao_do_trabalho_infantil" value="1">
+    </div>
+    <div class="form-group">
+        <label for="programa_projovem_adolescente">Programa projovem adolescente:</label>
+        <input type="checkbox" class="form-control" id="programa_projovem_adolescente" placeholder="Programa projovem adolescente" name="programa_projovem_adolescente" value="1">
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>
+ 
+</body>
+</html>
