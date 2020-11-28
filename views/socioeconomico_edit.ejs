@@ -31,7 +31,7 @@
 
 
 <div class="container">
-  <h2><%= title %></h2>
+  <h1 class="display-4 text-center"><%= title %></h1>
   <form action="/socioeconomico_update" method="post"  id="form">
     <input type="hidden" value="<%= socioeconomico.id_socioeconomico %>" name="id_socioeconomico">
     <div class="form-group">
@@ -54,7 +54,7 @@
         <label for="programa_projovem_adolescente">Programa projovem adolescente:</label>
         <input type="checkbox" class="form-control" id="programa_projovem_adolescente" <%= (socioeconomico.programa_projovem_adolescente == 1) ? "checked" : "" %> placeholder="Programa projovem adolescente" name="programa_projovem_adolescente" value="1">
     </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
   </form>
 </div>
  

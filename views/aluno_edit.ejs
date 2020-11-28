@@ -12,7 +12,7 @@
 <body>
 
   <div class="container">
-    <h2><%= title %></h2>
+    <h1 class="display-4 text-center"><%= title %></h1>
     <form action="/aluno_update" method="post">
       <input type="hidden" value="<%= aluno.matricula %>" name="matricula">
       <div class="form-group">
@@ -55,7 +55,7 @@
         <label for="local_idlocal">local_idlocal:</label>
         <input type="text" class="form-control" value="<%= aluno.local_idlocal %>" id="local_idlocal" placeholder="Entre com o local_idlocal" name="local_idlocal" required>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Atualizar</button>
     </form>
   </div>
 
