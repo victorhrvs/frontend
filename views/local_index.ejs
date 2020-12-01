@@ -38,6 +38,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th>ID</th>
               <th>CEP</th>
               <th>Cidade</th>
               <th>Bairro</th>
@@ -49,6 +50,7 @@
           <tbody>
               <% locais.forEach(function(local){ %>
                   <tr>
+                      <td><%= local.idlocal %></td>
                       <td><%= local.cep %></td>
                       <td><%= local.cidade %></td>
                       <td><%= local.bairro %></td>

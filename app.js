@@ -48,11 +48,30 @@ app.get('/',(req, res) => {
 
 // Create
 app.get('/aluno_add',(req, res) => {
-    res.render('aluno_add', {
-        title : 'Adicionar informações do Aluno'
+    let sql = "SELECT * FROM `socioeconomico`";
+    let query = connection.query(sql, (err, rows) => {
+        if(err) throw err;
+        let sqlLocal = "SELECT * FROM `local`";
+        let query2 = connection.query(sqlLocal, (err2, places) => {
+            if(err2) throw err2;
+            res.render('aluno_add', {
+                title : 'Adicionar informações do Aluno',
+                cadastros: rows,
+                locais: places
+            });
+        });
     });
 });
 
+
+function getSqlTable(nome_da_tabela) {
+    nome_da_tabela
+    let sql = "SELECT * FROM `" + nome_da_tabela + "`";
+    let query = connection.query(sql, (err, rows) => {
+        if(err) throw err;
+        return rows;
+    });
+}
 
 app.post('/aluno_save',(req, res) => { 
 
