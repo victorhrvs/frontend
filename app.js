@@ -63,16 +63,6 @@ app.get('/aluno_add',(req, res) => {
     });
 });
 
-
-function getSqlTable(nome_da_tabela) {
-    nome_da_tabela
-    let sql = "SELECT * FROM `" + nome_da_tabela + "`";
-    let query = connection.query(sql, (err, rows) => {
-        if(err) throw err;
-        return rows;
-    });
-}
-
 app.post('/aluno_save',(req, res) => { 
 
     idsocioeconomico = (req.body.socioeconomico_id_socioeconomico == '') ? null : req.body.socioeconomico_id_socioeconomico;
@@ -103,9 +93,19 @@ app.get('/aluno_edit/:matricula',(req, res) => {
     let sql = `Select * from notebooks_para_todos.aluno where matricula = ${alunoId}`;
     let query = connection.query(sql,(err, result) => {
         if(err) throw err;
-        res.render('aluno_edit', {
-            title : 'Editar aluno',
-            aluno : result[0]
+        let sqlSocioeconomico = "SELECT * FROM `socioeconomico`";
+        let query2 = connection.query(sqlSocioeconomico, (err2, rows) => {
+            if(err2) throw err2;
+            let sqlLocal = "SELECT * FROM `local`";
+            let query3 = connection.query(sqlLocal, (err3, places) => {
+                if(err3) throw err3;
+                res.render('aluno_edit', {
+                    title : 'Editar aluno',
+                    aluno : result[0],
+                    cadastros: rows,
+                    locais: places
+                });
+            });
         });
     });
 });

@@ -61,18 +61,21 @@
                   <td><%= user.nome %></td>
                   <td><%= user.email %></td>
                   <td><%= user.telefone %></td>
-                  <td><% if(user.socioeconomico_id_socioeconomico){ %>
-                      <p>sim</p>
+                  <td class="text-center"><% if(user.socioeconomico_id_socioeconomico){ %>
+                      <p>sim </p>
+                      <small class="text-muted">ID:<%= user.socioeconomico_id_socioeconomico%></small>
                     <% } else{ %>  
                       <p>não</p>
                   <% } %></td>
-                  <td><% if (user.permissao_para_pegar_notebook) { %>
+                  <td class="text-center"><% if (user.permissao_para_pegar_notebook) { %>
                     <p>sim</p>
                   <% }else{ %>  
                     <p>não</p>
                   <% } %>
                   </td>
-                  <td><%= user.local_idlocal  %></td>
+                  <td class="text-center">
+                    <small class="text-muted">ID:<%= user.local_idlocal  %></small>
+                  </td>
                   <td>
                       <a href="aluno_edit/<%= user.matricula %>" class="btn btn-sm btn-primary">Editar</a>
                       <a href="aluno_delete/<%= user.matricula %>" class="btn btn-sm btn-danger">Delete</a>

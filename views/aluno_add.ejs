@@ -36,7 +36,7 @@
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="text" class="form-control" id="email" placeholder="Entre com o email" name="email" required>
+      <input type="email" class="form-control" id="email" placeholder="Entre com o email" name="email" required>
     </div>
     <div class="form-group">
       <label for="telefone">Telefone:</label>
@@ -46,6 +46,7 @@
       <label for="socioeconomico_id_socioeconomico">ID do Cadastro Socioeconomico:</label>
       <!--<input type="text" class="form-control" id="socioeconomico_id_socioeconomico" placeholder="Entre com o socioeconomico_id_socioeconomico" name="socioeconomico_id_socioeconomico"> -->
       <select class="browser-default custom-select" id="socioeconomico_id_socioeconomico" name="socioeconomico_id_socioeconomico">
+        <option value="">Não possui cadastro socioeconômico</option>
         <% cadastros.forEach(function(cadastro){ %>
           <option value="<%= cadastro.id_socioeconomico %>">ID: <%= cadastro.id_socioeconomico %> Renda per capita: <%= cadastro.renda_per_capita %> Membros na família: <%= cadastro.numero_de_membros_da_familia %></td></option>
         <% }); %>
