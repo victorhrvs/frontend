@@ -37,6 +37,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Membros na família</th>
               <th>Renda per capita</th>
               <th>Bolsa Família</th>
@@ -48,6 +49,7 @@
           <tbody>
               <% cadastros.forEach(function(cadastro){ %>
                   <tr>
+                      <td><%= cadastro.id_socioeconomico %> </td>
                       <td><%= cadastro.numero_de_membros_da_familia %></td>
                       <td><%= cadastro.renda_per_capita %></td>
                       <td><% if (cadastro.programa_bolsa_familia) { %>
