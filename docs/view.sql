@@ -1,0 +1,5 @@
+CREATE VIEW ALUNO_RENDA_CRESCENTE AS
+SELECT cpf, nome, data_de_nascimento, permissao_para_pegar_notebook, renda_per_capita, numero_de_membros_da_familia, programa_bolsa_familia, programa_de_erradicacao_do_trabalho_infantil, programa_projovem_adolescente
+FROM notebooks_para_todos.aluno, notebooks_para_todos.socioeconomico
+WHERE aluno.socioeconomico_id_socioeconomico = socioeconomico.id_socioeconomico
+ORDER BY renda_per_capita;
